@@ -1,0 +1,2524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>J.W Publications - Premium Novels & Stories</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script defer src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #000;
+            --secondary: #0066ff;
+            --light: #f8f9fa;
+            --text: #1a1a1a;
+            --border: #e0e0e0;
+            --danger: #e63946;
+            --success: #2a9d8f;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #fff;
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        /* ===== HEADER ===== */
+        header {
+            background: linear-gradient(135deg, #000 0%, #1a1a1a 100%);
+            color: white;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+            backdrop-filter: blur(10px);
+        }
+
+        .header-wrapper {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 26px;
+            font-weight: 900;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
+
+        .logo-icon {
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, #0066ff, #00d4ff);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            box-shadow: 0 4px 15px rgba(0, 102, 255, 0.4);
+        }
+
+        nav {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            position: relative;
+            transition: color 0.3s;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #0066ff;
+            transition: width 0.3s;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .nav-icons {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .icon-btn {
+            background: rgba(255,255,255,0.1);
+            border: none;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            font-size: 18px;
+        }
+
+        .icon-btn:hover {
+            background: #0066ff;
+            transform: translateY(-2px);
+        }
+
+        .admin-link-btn {
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.25);
+            color: white;
+            padding: 9px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 13px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.3s;
+        }
+
+        .admin-link-btn:hover {
+            background: #0066ff;
+            border-color: #0066ff;
+        }
+
+        /* ---- Sidebar drawer ---- */
+        .hamburger-btn { display: none; }
+        .sidebar-overlay {
+            position: fixed; inset: 0; background: rgba(0,0,0,0.5);
+            z-index: 998; display: none;
+        }
+        .sidebar-overlay.show { display: block; }
+        .sidebar {
+            position: fixed; top: 0; left: -280px; width: 260px; height: 100%;
+            background: #fff; z-index: 999; box-shadow: 2px 0 12px rgba(0,0,0,0.2);
+            transition: left 0.25s ease; display: flex; flex-direction: column; padding: 16px 0;
+        }
+        .sidebar.show { left: 0; }
+        .sidebar-header {
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 0 16px 16px; border-bottom: 1px solid #eee; margin-bottom: 10px;
+        }
+        .sidebar-close { font-size: 26px; cursor: pointer; color: #666; }
+        .sidebar a {
+            display: block; padding: 14px 20px; color: #222; text-decoration: none;
+            font-weight: 500; border-bottom: 1px solid #f2f2f2;
+        }
+        .sidebar a:hover { background: #f7f7f7; }
+
+        /* ---- Headlines ticker ---- */
+        .headlines-bar {
+            display: flex; align-items: center; background: #111; color: #fff;
+            overflow: hidden; height: 38px;
+        }
+        .headlines-tag {
+            background: #d32f2f; padding: 0 14px; height: 100%; display: flex;
+            align-items: center; font-size: 13px; font-weight: 700; flex-shrink: 0;
+        }
+        .headlines-track {
+            white-space: nowrap; padding-left: 100%;
+            animation: scrollHeadlines 22s linear infinite;
+            font-size: 14px;
+        }
+        @keyframes scrollHeadlines {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-100%); }
+        }
+
+        /* ---- Live badge ---- */
+        .live-badge {
+            display: inline-block; background: #d32f2f; color: #fff; padding: 4px 14px;
+            border-radius: 20px; font-size: 12px; font-weight: 700; margin: 14px 0 6px;
+            animation: pulseBadge 1.6s ease-in-out infinite;
+        }
+        @keyframes pulseBadge {
+            0%, 100% { opacity: 1; } 50% { opacity: 0.6; }
+        }
+        .hero-logo {
+            font-size: 64px; margin-bottom: 6px;
+            filter: drop-shadow(0 0 14px rgba(0,102,255,0.6));
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            background: linear-gradient(135deg, #000 0%, #1a1a1a 50%, #0066ff 100%);
+            color: white;
+            padding: 80px 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23000" width="1200" height="600"/><circle cx="200" cy="100" r="80" fill="%23fff" opacity="0.05"/><circle cx="1000" cy="500" r="120" fill="%230066ff" opacity="0.1"/></svg>');
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 56px;
+            font-weight: 900;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .search-hero {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+            background: white;
+            padding: 8px;
+            border-radius: 50px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+
+        .search-hero input {
+            flex: 1;
+            border: none;
+            padding: 15px 25px;
+            font-size: 16px;
+            border-radius: 50px;
+            outline: none;
+        }
+
+        .search-hero button {
+            background: #0066ff;
+            color: white;
+            border: none;
+            padding: 15px 35px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 700;
+            transition: all 0.3s;
+        }
+
+        .search-hero button:hover {
+            background: #0052cc;
+            transform: translateX(5px);
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 40px;
+            justify-content: center;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-num {
+            font-size: 32px;
+            font-weight: 900;
+        }
+
+        .stat-text {
+            font-size: 13px;
+            opacity: 0.8;
+        }
+
+        /* ===== CATEGORIES ===== */
+        .categories-section {
+            max-width: 1400px;
+            margin: 60px auto;
+            padding: 0 30px;
+        }
+
+        .section-title {
+            font-size: 32px;
+            font-weight: 900;
+            margin-bottom: 30px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: #0066ff;
+            border-radius: 2px;
+        }
+
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .category-card {
+            background: white;
+            border: 2px solid var(--border);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 600;
+        }
+
+        .category-card:hover {
+            border-color: #0066ff;
+            background: var(--light);
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 102, 255, 0.15);
+        }
+
+        .category-card.active {
+            background: #000;
+            color: white;
+            border-color: #000;
+        }
+
+        /* ===== NOVELS SECTION ===== */
+        .novels-section {
+            max-width: 1400px;
+            margin: 80px auto 0;
+            padding: 0 30px;
+        }
+
+        .novels-container {
+            margin-top: 40px;
+        }
+
+        .subsection-title {
+            font-size: 24px;
+            font-weight: 800;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .badge-free {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .badge-paid {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        .novels-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+            gap: 25px;
+            margin-bottom: 60px;
+        }
+
+        .novel-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            border: 1px solid var(--border);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            position: relative;
+        }
+
+        .novel-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 32px rgba(0, 102, 255, 0.2);
+            border-color: #0066ff;
+        }
+
+        .novel-cover {
+            width: 100%;
+            height: 240px;
+            background: linear-gradient(135deg, #000 0%, #333 50%, #0066ff 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 60px;
+            font-weight: bold;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .novel-cover::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.1) 50%, transparent 70%);
+        }
+
+        .novel-info {
+            padding: 18px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .novel-title {
+            font-size: 15px;
+            font-weight: 700;
+            margin-bottom: 6px;
+            line-height: 1.3;
+            color: #000;
+            min-height: 40px;
+        }
+
+        .novel-author {
+            font-size: 12px;
+            color: #666;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .novel-meta {
+            font-size: 11px;
+            color: #999;
+            margin-bottom: 10px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .novel-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: auto;
+            padding-top: 12px;
+            border-top: 1px solid var(--border);
+        }
+
+        .read-btn {
+            padding: 8px 14px;
+            background: #000;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 12px;
+            transition: all 0.3s;
+        }
+
+        .read-btn:hover {
+            background: #0066ff;
+            transform: scale(1.05);
+        }
+
+        .price {
+            font-weight: 700;
+            font-size: 14px;
+            color: #0066ff;
+        }
+
+        /* ===== FILTER ===== */
+        .filter-bar {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 10px 18px;
+            border: 2px solid var(--border);
+            background: white;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+            font-size: 13px;
+        }
+
+        .filter-btn.active {
+            background: #000;
+            color: white;
+            border-color: #000;
+        }
+
+        .filter-btn:hover {
+            border-color: #0066ff;
+            color: #0066ff;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: #000;
+            color: white;
+            padding: 60px 30px 30px;
+            margin-top: 100px;
+        }
+
+        .footer-wrapper {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+            padding-bottom: 40px;
+            border-bottom: 1px solid #333;
+        }
+
+        .footer-col h4 {
+            margin-bottom: 20px;
+            color: #0066ff;
+            font-size: 15px;
+        }
+
+        .footer-col a {
+            display: block;
+            color: #ccc;
+            text-decoration: none;
+            margin-bottom: 10px;
+            font-size: 13px;
+            transition: color 0.3s;
+        }
+
+        .footer-col a:hover {
+            color: #0066ff;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            color: #999;
+            font-size: 13px;
+        }
+
+        /* ===== MODAL (shared base) ===== */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            animation: fadeIn 0.3s;
+        }
+
+        .modal.show {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            background: white;
+            margin: 5% auto;
+            padding: 40px;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 600px;
+            max-height: 80vh;
+            overflow-y: auto;
+            animation: slideUp 0.3s;
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .modal-close {
+            float: right;
+            font-size: 28px;
+            cursor: pointer;
+            color: #999;
+            transition: color 0.3s;
+        }
+
+        .modal-close:hover {
+            color: #0066ff;
+        }
+
+        .modal h2 {
+            margin-top: 15px;
+            margin-bottom: 10px;
+            font-size: 24px;
+        }
+
+        .modal-author {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        .modal-desc {
+            line-height: 1.8;
+            color: #555;
+            margin: 20px 0;
+        }
+
+        .modal-price-box {
+            background: #f5f5f5;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border-left: 4px solid #0066ff;
+        }
+
+        .modal-btn {
+            width: 100%;
+            padding: 14px;
+            background: #0066ff;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .modal-btn:hover {
+            background: #0052cc;
+            transform: scale(1.02);
+        }
+
+        /* ===== ADMIN LOGIN MODAL ===== */
+        .admin-login-content {
+            max-width: 380px;
+            text-align: center;
+        }
+
+        .admin-login-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #000, #0066ff);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            color: white;
+            margin: 10px auto 20px;
+        }
+
+        .form-group {
+            text-align: left;
+            margin-bottom: 18px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 6px;
+            color: #333;
+        }
+
+        .form-input,
+        .form-select,
+        .form-textarea {
+            width: 100%;
+            padding: 12px 14px;
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            font-size: 14px;
+            font-family: inherit;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .form-input:focus,
+        .form-select:focus,
+        .form-textarea:focus {
+            border-color: #0066ff;
+        }
+
+        .form-textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .form-error {
+            display: none;
+            background: #fdecea;
+            color: var(--danger);
+            padding: 10px 14px;
+            border-radius: 8px;
+            font-size: 13px;
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        .form-error.show {
+            display: block;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .form-hint {
+            font-size: 11px;
+            color: #999;
+            margin-top: 15px;
+        }
+
+        /* ===== ADMIN DASHBOARD ===== */
+        .admin-dashboard {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--light);
+            z-index: 1500;
+            overflow-y: auto;
+        }
+
+        .admin-dashboard.show {
+            display: block;
+        }
+
+        .admin-topbar {
+            background: #000;
+            color: white;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .admin-topbar .logo {
+            font-size: 20px;
+        }
+
+        .admin-topbar-right {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .admin-badge {
+            background: #0066ff;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .btn-logout {
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.25);
+            color: white;
+            padding: 9px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 13px;
+        }
+
+        .btn-logout:hover {
+            background: var(--danger);
+            border-color: var(--danger);
+        }
+
+        .admin-layout {
+            display: flex;
+            min-height: calc(100vh - 62px);
+        }
+
+        .admin-sidebar {
+            width: 240px;
+            background: white;
+            border-right: 1px solid var(--border);
+            padding: 25px 0;
+            flex-shrink: 0;
+        }
+
+        .sidebar-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px 25px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 14px;
+            color: #444;
+            border-left: 3px solid transparent;
+            transition: all 0.25s;
+        }
+
+        .sidebar-item i {
+            width: 18px;
+            text-align: center;
+        }
+
+        .sidebar-item:hover {
+            background: var(--light);
+            color: #0066ff;
+        }
+
+        .sidebar-item.active {
+            border-left-color: #0066ff;
+            background: #eef4ff;
+            color: #0066ff;
+        }
+
+        .admin-main {
+            flex: 1;
+            padding: 30px 35px;
+        }
+
+        .admin-panel {
+            display: none;
+        }
+
+        .admin-panel.active {
+            display: block;
+        }
+
+        .admin-panel-title {
+            font-size: 24px;
+            font-weight: 800;
+            margin-bottom: 25px;
+        }
+
+        /* Overview cards */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 35px;
+        }
+
+        .stat-card {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 22px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .stat-card-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            color: white;
+            background: linear-gradient(135deg, #000, #0066ff);
+            flex-shrink: 0;
+        }
+
+        .stat-card-num {
+            font-size: 24px;
+            font-weight: 900;
+        }
+
+        .stat-card-label {
+            font-size: 12px;
+            color: #888;
+        }
+
+        /* Admin form card */
+        .admin-card {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 28px;
+            margin-bottom: 25px;
+        }
+
+        .admin-card-title {
+            font-size: 17px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .toggle-group {
+            display: flex;
+            gap: 10px;
+        }
+
+        .toggle-option {
+            flex: 1;
+            padding: 12px;
+            text-align: center;
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 13px;
+            transition: all 0.25s;
+        }
+
+        .toggle-option.selected {
+            background: #000;
+            color: white;
+            border-color: #000;
+        }
+
+        .cover-color-picker {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .cover-swatch {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            cursor: pointer;
+            border: 3px solid transparent;
+        }
+
+        .cover-swatch.selected {
+            border-color: #0066ff;
+        }
+
+        .btn-primary-full {
+            width: 100%;
+            padding: 14px;
+            background: #0066ff;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 15px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-primary-full:hover {
+            background: #0052cc;
+        }
+
+        /* Manage novels table */
+        .table-search {
+            margin-bottom: 20px;
+        }
+
+        .admin-table-wrap {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .admin-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .admin-table th {
+            background: var(--light);
+            text-align: left;
+            padding: 14px 18px;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #666;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .admin-table td {
+            padding: 14px 18px;
+            border-bottom: 1px solid var(--border);
+            font-size: 14px;
+        }
+
+        .admin-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .table-novel-title {
+            font-weight: 700;
+        }
+
+        .table-actions {
+            display: flex;
+            gap: 8px;
+        }
+
+        .btn-icon-sm {
+            width: 32px;
+            height: 32px;
+            border-radius: 6px;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 13px;
+            transition: all 0.25s;
+        }
+
+        .btn-edit-sm {
+            background: #eef4ff;
+            color: #0066ff;
+        }
+
+        .btn-edit-sm:hover {
+            background: #0066ff;
+            color: white;
+        }
+
+        .btn-delete-sm {
+            background: #fdecea;
+            color: var(--danger);
+        }
+
+        .btn-delete-sm:hover {
+            background: var(--danger);
+            color: white;
+        }
+
+        .btn-chapters-sm {
+            background: #e8f8f6;
+            color: var(--success);
+        }
+
+        .btn-chapters-sm:hover {
+            background: var(--success);
+            color: white;
+        }
+
+        /* Chapter list inside Add Chapter panel */
+        .chapter-list {
+            margin-top: 20px;
+        }
+
+        .chapter-list-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 16px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+
+        .chapter-list-item-title {
+            font-weight: 600;
+            font-size: 13px;
+        }
+
+        .chapter-list-item-num {
+            font-size: 11px;
+            color: #999;
+        }
+
+        /* Confirm delete modal */
+        .confirm-modal-content {
+            max-width: 400px;
+            text-align: center;
+        }
+
+        .confirm-icon {
+            font-size: 40px;
+            color: var(--danger);
+            margin-bottom: 15px;
+        }
+
+        .confirm-actions {
+            display: flex;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .confirm-actions button {
+            flex: 1;
+            padding: 12px;
+            border-radius: 8px;
+            border: none;
+            font-weight: 700;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .btn-cancel {
+            background: var(--light);
+            color: #333;
+        }
+
+        .btn-confirm-delete {
+            background: var(--danger);
+            color: white;
+        }
+
+        /* Toast */
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #000;
+            color: white;
+            padding: 14px 22px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            z-index: 3000;
+            display: none;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+        }
+
+        .toast.show {
+            display: flex;
+        }
+
+        .toast.success {
+            border-left: 4px solid var(--success);
+        }
+
+        .toast.error {
+            border-left: 4px solid var(--danger);
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .hamburger-btn {
+                display: block; position: absolute; left: 16px; top: 26px;
+                background: none; border: none; color: #fff; font-size: 22px;
+            }
+            .nav-icons {
+                margin-top: 6px;
+            }
+            .logo {
+                font-size: 16px;
+                letter-spacing: 0.5px;
+                gap: 0;
+                margin-left: 30px;
+            }
+            .header-wrapper {
+                flex-direction: row;
+                justify-content: center;
+                padding: 15px 20px;
+                position: relative;
+            }
+
+            nav a {
+                display: none;
+            }
+
+            nav {
+                flex-direction: row;
+                gap: 15px;
+            }
+
+            .hero {
+                padding: 50px 20px;
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .search-hero {
+                flex-direction: column;
+            }
+
+            .search-hero input,
+            .search-hero button {
+                width: 100%;
+            }
+
+            .novels-grid {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+                gap: 15px;
+            }
+
+            .modal-content {
+                padding: 30px 20px;
+                margin: 20% auto;
+            }
+
+            .hero-stats {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .admin-layout {
+                flex-direction: column;
+            }
+
+            .admin-sidebar {
+                width: 100%;
+                display: flex;
+                overflow-x: auto;
+                padding: 10px;
+            }
+
+            .sidebar-item {
+                border-left: none;
+                border-bottom: 3px solid transparent;
+                white-space: nowrap;
+                padding: 10px 16px;
+            }
+
+            .sidebar-item.active {
+                border-left-color: transparent;
+                border-bottom-color: #0066ff;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .admin-main {
+                padding: 20px;
+            }
+
+            .admin-table-wrap {
+                overflow-x: auto;
+            }
+
+            .admin-table {
+                min-width: 600px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- SIDEBAR DRAWER -->
+    <div class="sidebar-overlay" id="sidebarOverlay" onclick="closeSidebar()"></div>
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="logo"><span>J.W Publications</span></div>
+            <span class="sidebar-close" onclick="closeSidebar()">&times;</span>
+        </div>
+        <a href="#home" onclick="closeSidebar()">🏠 Home</a>
+        <a href="#novels" onclick="closeSidebar()">📖 Novels</a>
+        <a href="#about" onclick="closeSidebar()">ℹ️ About</a>
+        <a href="#contact" onclick="closeSidebar()">✉️ Contact</a>
+        <a href="/admin/">🔐 Admin Panel</a>
+    </div>
+
+    <!-- HEADER -->
+    <header>
+        <div class="header-wrapper">
+            <button class="icon-btn hamburger-btn" onclick="openSidebar()">☰</button>
+            <div class="logo">
+                <span>J.W Publications</span>
+            </div>
+            <nav>
+                <a href="#home">Home</a>
+                <a href="#novels">Novels</a>
+                <a href="#about">About</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- HEADLINES TICKER -->
+    <div class="headlines-bar">
+        <span class="headlines-tag">🔴 LIVE</span>
+        <div class="headlines-track" id="headlinesTrack"><span>J.W Publications mein khush aamdeed...</span></div>
+    </div>
+
+    <!-- HERO SECTION -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>J.W Publications</h1>
+            <span class="live-badge">🔴 Live Now</span>
+            <p>Discover thousands of English & Urdu novels. Free reads and premium stories in one place.</p>
+
+            <div class="search-hero">
+                <input type="text" placeholder="Search by title, author, or language..." id="globalSearch">
+                <button onclick="document.getElementById('globalSearch').focus()">🔍 Search</button>
+            </div>
+
+            <div class="hero-stats">
+                <div class="stat">
+                    <div class="stat-num" id="statTotalNovels">50,00,000+</div>
+                    <div class="stat-text">Novels Available</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-num" id="statActiveReaders">50,00,000+</div>
+                    <div class="stat-text">Active Readers</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-num" id="statFreeNovels">35,00,000+</div>
+                    <div class="stat-text">Free Stories</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CATEGORIES -->
+    <section class="categories-section">
+        <div style="display:flex; align-items:center; justify-content:center; gap:10px;">
+            <h2 class="section-title" style="margin-bottom:0;">Popular Categories</h2>
+            <button class="icon-btn" id="categoriesToggleBtn" onclick="toggleCategories()" style="color:#000; border:1px solid #ccc; border-radius:50%; width:36px; height:36px;">⋯</button>
+        </div>
+        <div class="categories-grid" id="categoriesGrid" style="display:none;">
+            <div class="category-card active" onclick="filterByCategory('all')">All Novels</div>
+            <div class="category-card" onclick="filterByCategory('free')">✨ Free</div>
+            <div class="category-card" onclick="filterByCategory('paid')">💎 Premium</div>
+            <div class="category-card" onclick="filterByCategory('romantic')">💕 Romantic</div>
+            <div class="category-card" onclick="filterByCategory('thriller')">🔥 Thriller</div>
+            <div class="category-card" onclick="filterByCategory('drama')">🎭 Drama</div>
+            <div class="category-card" onclick="filterByCategory('urdu')">اردو Stories</div>
+            <div class="category-card" onclick="filterByCategory('english')">English</div>
+        </div>
+    </section>
+
+    <!-- NOVELS -->
+    <section class="novels-section" id="novels">
+        <!-- FREE NOVELS -->
+        <div class="novels-container">
+            <h3 class="subsection-title">
+                <span>🎯 Free Novels</span>
+                <span class="badge badge-free">No Cost</span>
+            </h3>
+            <div class="filter-bar">
+                <button class="filter-btn active" onclick="filterByType('free', 'all')">All</button>
+                <button class="filter-btn" onclick="filterByType('free', 'urdu')">Urdu</button>
+                <button class="filter-btn" onclick="filterByType('free', 'english')">English</button>
+                <button class="filter-btn" onclick="filterByType('free', 'romantic')">Romantic</button>
+                <button class="filter-btn" onclick="filterByType('free', 'thriller')">Thriller</button>
+            </div>
+            <div class="novels-grid" id="freeNovelsGrid">
+                <!-- Free novel cards render here (via JS in Part 2/3) -->
+            </div>
+        </div>
+
+        <!-- PREMIUM NOVELS -->
+        <div class="novels-container">
+            <h3 class="subsection-title">
+                <span>💎 Premium Novels</span>
+                <span class="badge badge-paid">Paid</span>
+            </h3>
+            <div class="filter-bar">
+                <button class="filter-btn active" onclick="filterByType('paid', 'all')">All</button>
+                <button class="filter-btn" onclick="filterByType('paid', 'urdu')">Urdu</button>
+                <button class="filter-btn" onclick="filterByType('paid', 'english')">English</button>
+                <button class="filter-btn" onclick="filterByType('paid', 'drama')">Drama</button>
+                <button class="filter-btn" onclick="filterByType('paid', 'thriller')">Thriller</button>
+            </div>
+            <div class="novels-grid" id="paidNovelsGrid">
+                <!-- Premium novel cards render here (via JS in Part 2/3) -->
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer id="contact">
+        <div class="footer-wrapper">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>J.W Publications</h4>
+                    <a href="#home">Home</a>
+                    <a href="#novels">Browse Novels</a>
+                    <a href="#about">About Us</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Categories</h4>
+                    <a href="#novels">Romantic</a>
+                    <a href="#novels">Thriller</a>
+                    <a href="#novels">Drama</a>
+                    <a href="#novels">Urdu Stories</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Support</h4>
+                    <a href="#">Help Center</a>
+                    <a href="#">Contact Us</a>
+                    <a href="#">Terms of Service</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Connect</h4>
+                    <a href="#">Facebook</a>
+                    <a href="#">Instagram</a>
+                    <a href="#">Twitter</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                &copy; 2026 J.W Publications. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- NOVEL READ/PREVIEW MODAL -->
+    <div class="modal" id="novelModal">
+        <div class="modal-content" id="novelModalContent">
+            <span class="modal-close" onclick="closeModal('novelModal')">&times;</span>
+            <!-- Filled dynamically -->
+        </div>
+    </div>
+
+    <!-- NOVEL READER MODAL (chapter reading view) -->
+    <div class="modal" id="readerModal">
+        <div class="modal-content" id="readerModalContent" style="max-width:700px; text-align:left;">
+            <span class="modal-close" onclick="closeModal('readerModal')">&times;</span>
+            <!-- Filled dynamically -->
+        </div>
+    </div>
+
+    <!-- ===== ADMIN LOGIN MODAL ===== -->
+    <div class="modal" id="adminLoginModal">
+        <div class="modal-content admin-login-content">
+            <span class="modal-close" onclick="closeModal('adminLoginModal')">&times;</span>
+            <div class="admin-login-icon"><i class="fas fa-user-shield"></i></div>
+            <h2 style="text-align:center;">Admin Login</h2>
+            <p class="modal-author" style="text-align:center;">Sign in to manage novels & chapters</p>
+
+            <div class="form-error" id="loginError">Invalid username or password.</div>
+
+            <form id="adminLoginForm" onsubmit="return false;">
+                <div class="form-group">
+                    <label>Username</label>
+                    <input type="text" class="form-input" id="adminUsername" placeholder="Enter admin username" autocomplete="off">
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" class="form-input" id="adminPassword" placeholder="Enter password" autocomplete="off">
+                </div>
+                <button type="submit" class="modal-btn" id="adminLoginBtn">Login</button>
+            </form>
+            <p class="form-hint">Default demo credentials: admin / admin123</p>
+        </div>
+    </div>
+
+    <!-- ===== ADMIN DASHBOARD ===== -->
+    <div class="admin-dashboard" id="adminDashboard">
+        <div class="admin-topbar">
+            <div class="logo"><div class="logo-icon" style="width:34px;height:34px;font-size:16px;">📚</div> J.W Admin</div>
+            <div class="admin-topbar-right">
+                <span class="admin-badge"><i class="fas fa-circle" style="font-size:8px;"></i> Logged in</span>
+                <button class="btn-logout" onclick="adminLogout()"><i class="fas fa-sign-out-alt"></i> Logout</button>
+            </div>
+        </div>
+
+        <div class="admin-layout">
+            <!-- SIDEBAR -->
+            <div class="admin-sidebar">
+                <div class="sidebar-item active" data-panel="overviewPanel" onclick="switchAdminPanel('overviewPanel', this)">
+                    <i class="fas fa-chart-pie"></i> Dashboard
+                </div>
+                <div class="sidebar-item" data-panel="addNovelPanel" onclick="switchAdminPanel('addNovelPanel', this)">
+                    <i class="fas fa-plus-circle"></i> Add New Novel
+                </div>
+                <div class="sidebar-item" data-panel="manageNovelsPanel" onclick="switchAdminPanel('manageNovelsPanel', this)">
+                    <i class="fas fa-book"></i> Manage Novels
+                </div>
+                <div class="sidebar-item" data-panel="addChapterPanel" onclick="switchAdminPanel('addChapterPanel', this)">
+                    <i class="fas fa-file-alt"></i> Add Chapter
+                </div>
+            </div>
+
+            <!-- MAIN CONTENT -->
+            <div class="admin-main">
+
+                <!-- OVERVIEW PANEL -->
+                <div class="admin-panel active" id="overviewPanel">
+                    <h2 class="admin-panel-title">Dashboard Overview</h2>
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-card-icon"><i class="fas fa-book"></i></div>
+                            <div>
+                                <div class="stat-card-num" id="dashTotalNovels">0</div>
+                                <div class="stat-card-label">Total Novels</div>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-card-icon" style="background:linear-gradient(135deg,#2a9d8f,#4fd1c5);"><i class="fas fa-gift"></i></div>
+                            <div>
+                                <div class="stat-card-num" id="dashFreeNovels">0</div>
+                                <div class="stat-card-label">Free Novels</div>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-card-icon" style="background:linear-gradient(135deg,#856404,#ffc107);"><i class="fas fa-gem"></i></div>
+                            <div>
+                                <div class="stat-card-num" id="dashPaidNovels">0</div>
+                                <div class="stat-card-label">Premium Novels</div>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-card-icon" style="background:linear-gradient(135deg,#000,#555);"><i class="fas fa-file-alt"></i></div>
+                            <div>
+                                <div class="stat-card-num" id="dashTotalChapters">0</div>
+                                <div class="stat-card-label">Total Chapters</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="admin-card">
+                        <div class="admin-card-title"><i class="fas fa-bolt"></i> Quick Actions</div>
+                        <div style="display:flex; gap:15px; flex-wrap:wrap;">
+                            <button class="btn-primary-full" style="width:auto;" onclick="switchAdminPanelById('addNovelPanel')"><i class="fas fa-plus"></i> Add New Novel</button>
+                            <button class="btn-primary-full" style="width:auto; background:#000;" onclick="switchAdminPanelById('addChapterPanel')"><i class="fas fa-file-alt"></i> Add Chapter</button>
+                            <button class="btn-primary-full" style="width:auto; background:var(--success);" onclick="switchAdminPanelById('manageNovelsPanel')"><i class="fas fa-book"></i> Manage Novels</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ADD NEW NOVEL PANEL -->
+                <div class="admin-panel" id="addNovelPanel">
+                    <h2 class="admin-panel-title">Add New Novel</h2>
+                    <div class="admin-card">
+                        <form id="addNovelForm" onsubmit="return false;">
+                            <div class="form-error" id="addNovelError">Please fill in all required fields.</div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Novel Title *</label>
+                                    <input type="text" class="form-input" id="novelTitle" placeholder="Enter novel title">
+                                </div>
+                                <div class="form-group">
+                                    <label>Author Name *</label>
+                                    <input type="text" class="form-input" id="novelAuthor" placeholder="Enter author name">
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Language *</label>
+                                    <select class="form-select" id="novelLanguage">
+                                        <option value="english">English</option>
+                                        <option value="urdu">Urdu</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Category *</label>
+                                    <select class="form-select" id="novelCategory">
+                                        <option value="romantic">Romantic</option>
+                                        <option value="thriller">Thriller</option>
+                                        <option value="drama">Drama</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Novel Type *</label>
+                                <div class="toggle-group">
+                                    <div class="toggle-option selected" id="typeFreeBtn" onclick="selectNovelType('free')">✨ Free</div>
+                                    <div class="toggle-option" id="typePaidBtn" onclick="selectNovelType('paid')">💎 Premium</div>
+                                </div>
+                            </div>
+
+                            <div class="form-group" id="novelPriceGroup" style="display:none;">
+                                <label>Price (PKR) *</label>
+                                <input type="number" class="form-input" id="novelPrice" placeholder="e.g. 199" min="0">
+                            </div>
+
+                            <div class="form-group">
+                                <label>Cover Color Theme</label>
+                                <div class="cover-color-picker" id="coverColorPicker">
+                                    <div class="cover-swatch selected" style="background:linear-gradient(135deg,#000,#0066ff);" data-cover="cover1" onclick="selectCoverColor(this)"></div>
+                                    <div class="cover-swatch" style="background:linear-gradient(135deg,#e63946,#f77f00);" data-cover="cover2" onclick="selectCoverColor(this)"></div>
+                                    <div class="cover-swatch" style="background:linear-gradient(135deg,#2a9d8f,#4fd1c5);" data-cover="cover3" onclick="selectCoverColor(this)"></div>
+                                    <div class="cover-swatch" style="background:linear-gradient(135deg,#7209b7,#b5179e);" data-cover="cover4" onclick="selectCoverColor(this)"></div>
+                                    <div class="cover-swatch" style="background:linear-gradient(135deg,#856404,#ffc107);" data-cover="cover5" onclick="selectCoverColor(this)"></div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Description *</label>
+                                <textarea class="form-textarea" id="novelDescription" placeholder="Write a short description of the novel..."></textarea>
+                            </div>
+
+                            <button type="submit" class="btn-primary-full" id="addNovelBtn"><i class="fas fa-plus"></i> Add Novel</button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- MANAGE NOVELS PANEL -->
+                <div class="admin-panel" id="manageNovelsPanel">
+                    <h2 class="admin-panel-title">Manage Novels</h2>
+                    <div class="table-search">
+                        <input type="text" class="form-input" id="manageNovelsSearch" placeholder="Search novels by title or author...">
+                    </div>
+                    <div class="admin-table-wrap">
+                        <table class="admin-table">
+                            <thead>
+                                <tr>
+                                    <th>Title</th>
+                                    <th>Author</th>
+                                    <th>Language</th>
+                                    <th>Category</th>
+                                    <th>Type</th>
+                                    <th>Chapters</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="manageNovelsTableBody">
+                                <!-- Rows rendered dynamically in Part 2/3 -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- ADD CHAPTER PANEL -->
+                <div class="admin-panel" id="addChapterPanel">
+                    <h2 class="admin-panel-title">Add Chapter</h2>
+                    <div class="admin-card">
+                        <form id="addChapterForm" onsubmit="return false;">
+                            <div class="form-error" id="addChapterError">Please select a novel and fill in all fields.</div>
+
+                            <div class="form-group">
+                                <label>Select Novel *</label>
+                                <select class="form-select" id="chapterNovelSelect">
+                                    <option value="">-- Choose a novel --</option>
+                                </select>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Chapter Number *</label>
+                                    <input type="number" class="form-input" id="chapterNumber" placeholder="e.g. 1" min="1">
+                                </div>
+                                <div class="form-group">
+                                    <label>Chapter Title *</label>
+                                    <input type="text" class="form-input" id="chapterTitle" placeholder="Enter chapter title">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Chapter Content *</label>
+                                <textarea class="form-textarea" id="chapterContent" placeholder="Write the chapter content here..." style="min-height:220px;"></textarea>
+                            </div>
+
+                            <button type="submit" class="btn-primary-full" id="addChapterBtn"><i class="fas fa-plus"></i> Add Chapter</button>
+                        </form>
+
+                        <div class="chapter-list" id="existingChaptersList">
+                            <!-- Existing chapters for selected novel render here -->
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== EDIT NOVEL MODAL ===== -->
+    <div class="modal" id="editNovelModal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeModal('editNovelModal')">&times;</span>
+            <h2>Edit Novel</h2>
+            <div class="form-error" id="editNovelError">Please fill in all required fields.</div>
+            <form id="editNovelForm" onsubmit="return false;">
+                <input type="hidden" id="editNovelId">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Novel Title *</label>
+                        <input type="text" class="form-input" id="editNovelTitle">
+                    </div>
+                    <div class="form-group">
+                        <label>Author Name *</label>
+                        <input type="text" class="form-input" id="editNovelAuthor">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Language *</label>
+                        <select class="form-select" id="editNovelLanguage">
+                            <option value="english">English</option>
+                            <option value="urdu">Urdu</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Category *</label>
+                        <select class="form-select" id="editNovelCategory">
+                            <option value="romantic">Romantic</option>
+                            <option value="thriller">Thriller</option>
+                            <option value="drama">Drama</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Novel Type *</label>
+                    <div class="toggle-group">
+                        <div class="toggle-option selected" id="editTypeFreeBtn" onclick="selectEditNovelType('free')">✨ Free</div>
+                        <div class="toggle-option" id="editTypePaidBtn" onclick="selectEditNovelType('paid')">💎 Premium</div>
+                    </div>
+                </div>
+                <div class="form-group" id="editNovelPriceGroup" style="display:none;">
+                    <label>Price (PKR) *</label>
+                    <input type="number" class="form-input" id="editNovelPrice" min="0">
+                </div>
+                <div class="form-group">
+                    <label>Description *</label>
+                    <textarea class="form-textarea" id="editNovelDescription"></textarea>
+                </div>
+                <button type="submit" class="btn-primary-full" id="editNovelSaveBtn"><i class="fas fa-save"></i> Save Changes</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- ===== DELETE CONFIRM MODAL ===== -->
+    <div class="modal" id="deleteConfirmModal">
+        <div class="modal-content confirm-modal-content">
+            <div class="confirm-icon"><i class="fas fa-exclamation-triangle"></i></div>
+            <h2>Delete Novel?</h2>
+            <p class="modal-desc" id="deleteConfirmText">Are you sure you want to delete this novel? This action cannot be undone.</p>
+            <div class="confirm-actions">
+                <button class="btn-cancel" onclick="closeModal('deleteConfirmModal')">Cancel</button>
+                <button class="btn-confirm-delete" id="confirmDeleteBtn">Delete</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- TOAST NOTIFICATION -->
+    <div class="toast" id="toast">
+        <i class="fas fa-check-circle" id="toastIcon"></i>
+        <span id="toastMessage">Action completed successfully.</span>
+    </div>
+
+    <!--
+        Part 3 will add: admin login/auth, add/edit/delete novel, add chapter,
+        manage-novels table wiring, and localStorage persistence.
+    -->
+
+    <script>
+        /* =========================================================
+           PART 2: NOVEL DATA + PUBLIC-SITE RENDERING / FILTERING
+           ========================================================= */
+
+        // ---- Novel data ab data/novels.json se load hota hai (Decap CMS isi file ko edit karta hai) ----
+        let novels = [];
+
+        function formatIndianNumber(num) {
+            const numStr = Math.floor(num).toString();
+            let lastThree = numStr.substring(numStr.length - 3);
+            const otherNumbers = numStr.substring(0, numStr.length - 3);
+            if (otherNumbers !== "") {
+                lastThree = "," + lastThree;
+            }
+            return otherNumbers.replace(/\B(?=(\d{2})+(?!\d))/g, ",") + lastThree;
+        }
+
+        function updateActiveReaders() {
+            const BASE_READERS = 5000000; // 50 lakh (5 million) baseline
+            const el = document.getElementById("statActiveReaders");
+            if (!el) return;
+            fetch("https://api.countapi.xyz/hit/jwpublications-novels/site-visits")
+                .then(res => res.json())
+                .then(data => {
+                    const total = BASE_READERS + (data.value || 0);
+                    el.textContent = formatIndianNumber(total) + "+";
+                })
+                .catch(() => {
+                    el.textContent = formatIndianNumber(BASE_READERS) + "+";
+                });
+        }
+
+        function openSidebar() {
+            document.getElementById("sidebar").classList.add("show");
+            document.getElementById("sidebarOverlay").classList.add("show");
+        }
+        function closeSidebar() {
+            document.getElementById("sidebar").classList.remove("show");
+            document.getElementById("sidebarOverlay").classList.remove("show");
+        }
+
+        function toggleCategories() {
+            const grid = document.getElementById("categoriesGrid");
+            grid.style.display = grid.style.display === "none" ? "grid" : "none";
+        }
+
+        function updateHeadlines() {
+            const track = document.getElementById("headlinesTrack");
+            if (!track) return;
+            if (!novels.length) {
+                track.innerHTML = "<span>J.W Publications mein khush aamdeed... naye novels jald aa rahe hain!</span>";
+                return;
+            }
+            const latest = novels.slice(-6).reverse();
+            track.innerHTML = latest.map(n => `<span style="margin-right:60px;">📖 ${n.title} by ${n.author}${n.type === "free" ? " — FREE" : " — " + n.price}</span>`).join("");
+        }
+
+        async function loadNovelsFromCMS() {
+            try {
+                const res = await fetch("data/novels.json", { cache: "no-store" });
+                const json = await res.json();
+                novels = json.novels || [];
+                novels.forEach(n => {
+                    if (Array.isArray(n.chapters)) {
+                        chapters[n.id] = n.chapters;
+                    }
+                });
+                nextNovelId = novels.length ? Math.max(...novels.map(n => n.id)) + 1 : 1;
+            } catch (e) {
+                console.warn("Could not load data/novels.json:", e);
+            }
+            renderNovelGrids();
+            updateHeadlines();
+        }
+
+        let currentCategoryFilter = "all";
+        let currentFreeTypeFilter = "all";
+        let currentPaidTypeFilter = "all";
+
+        // ---- Helpers ----
+        function langLabel(lang) {
+            return lang === "urdu" ? "اردو" : "English";
+        }
+
+        function genreLabel(genre) {
+            return genre.charAt(0).toUpperCase() + genre.slice(1);
+        }
+
+        function matchesCategory(novel) {
+            if (currentCategoryFilter === "all") return true;
+            if (currentCategoryFilter === "free") return novel.type === "free";
+            if (currentCategoryFilter === "paid") return novel.type === "paid";
+            if (currentCategoryFilter === "urdu") return novel.lang === "urdu";
+            if (currentCategoryFilter === "english") return novel.lang === "english";
+            return novel.genre === currentCategoryFilter;
+        }
+
+        function buildNovelCard(novel) {
+            const priceHtml = novel.type === "free"
+                ? '<span class="price" style="color:#2a9d8f;">FREE</span>'
+                : `<span class="price">${novel.price}</span>`;
+
+            return `
+                <div class="novel-card" onclick="openNovelModal(${novel.id})">
+                    <div class="novel-cover">${novel.icon}</div>
+                    <div class="novel-info">
+                        <div class="novel-title">${novel.title}</div>
+                        <div class="novel-author"><i class="fas fa-feather-alt"></i> ${novel.author}</div>
+                        <div class="novel-meta">
+                            <span>${langLabel(novel.lang)}</span>
+                            <span>•</span>
+                            <span>${genreLabel(novel.genre)}</span>
+                        </div>
+                        <div class="novel-footer">
+                            ${priceHtml}
+                            <button class="read-btn" onclick="event.stopPropagation(); openNovelModal(${novel.id})">Read Now</button>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // ---- Render grids ----
+        function renderNovelGrids() {
+            const freeGrid = document.getElementById("freeNovelsGrid");
+            const paidGrid = document.getElementById("paidNovelsGrid");
+
+            const freeNovels = novels.filter(n =>
+                n.type === "free" &&
+                matchesCategory(n) &&
+                (currentFreeTypeFilter === "all" ||
+                 n.lang === currentFreeTypeFilter ||
+                 n.genre === currentFreeTypeFilter)
+            );
+
+            const paidNovels = novels.filter(n =>
+                n.type === "paid" &&
+                matchesCategory(n) &&
+                (currentPaidTypeFilter === "all" ||
+                 n.lang === currentPaidTypeFilter ||
+                 n.genre === currentPaidTypeFilter)
+            );
+
+            freeGrid.innerHTML = freeNovels.length
+                ? freeNovels.map(buildNovelCard).join("")
+                : '<p style="color:#999; grid-column: 1/-1;">Koi free novel is filter mein nahi mili.</p>';
+
+            paidGrid.innerHTML = paidNovels.length
+                ? paidNovels.map(buildNovelCard).join("")
+                : '<p style="color:#999; grid-column: 1/-1;">Koi premium novel is filter mein nahi mili.</p>';
+
+            updateHeroStats();
+        }
+
+        function updateHeroStats() {
+            // Hero numbers are fixed marketing stats (set in HTML) and are
+            // intentionally NOT tied to the real novel count, so they stay
+            // large even when the actual catalog is small.
+        }
+
+        // ---- Category filter (top section) ----
+        function filterByCategory(category) {
+            currentCategoryFilter = category;
+            document.querySelectorAll(".category-card").forEach(card => card.classList.remove("active"));
+            event.currentTarget.classList.add("active");
+            renderNovelGrids();
+        }
+
+        // ---- Type filter bars (free / paid sections) ----
+        function filterByType(section, type) {
+            if (section === "free") {
+                currentFreeTypeFilter = type;
+            } else {
+                currentPaidTypeFilter = type;
+            }
+            const bar = event.currentTarget.parentElement;
+            bar.querySelectorAll(".filter-btn").forEach(btn => btn.classList.remove("active"));
+            event.currentTarget.classList.add("active");
+            renderNovelGrids();
+        }
+
+        // ---- Global search ----
+        document.getElementById("globalSearch").addEventListener("input", function (e) {
+            const query = e.target.value.trim().toLowerCase();
+            if (!query) {
+                renderNovelGrids();
+                return;
+            }
+            const filtered = novels.filter(n =>
+                n.title.toLowerCase().includes(query) ||
+                n.author.toLowerCase().includes(query) ||
+                n.lang.toLowerCase().includes(query)
+            );
+            const freeGrid = document.getElementById("freeNovelsGrid");
+            const paidGrid = document.getElementById("paidNovelsGrid");
+            freeGrid.innerHTML = filtered.filter(n => n.type === "free").map(buildNovelCard).join("")
+                || '<p style="color:#999; grid-column: 1/-1;">Koi novel nahi mili.</p>';
+            paidGrid.innerHTML = filtered.filter(n => n.type === "paid").map(buildNovelCard).join("")
+                || '<p style="color:#999; grid-column: 1/-1;">Koi novel nahi mili.</p>';
+        });
+
+        // ---- Novel read/preview modal ----
+        function openNovelModal(id) {
+            const novel = novels.find(n => n.id === id);
+            if (!novel) return;
+
+            const priceBoxHtml = novel.type === "free"
+                ? `<div class="modal-price-box"><strong>FREE</strong> — Is novel ko turant parhna shuru karein.</div>`
+                : `<div class="modal-price-box"><strong>${novel.price}</strong> — Ye ek premium novel hai.</div>`;
+
+            document.getElementById("novelModalContent").innerHTML = `
+                <span class="modal-close" onclick="closeModal('novelModal')">&times;</span>
+                <div style="font-size:50px; text-align:center;">${novel.icon}</div>
+                <h2 style="text-align:center;">${novel.title}</h2>
+                <p class="modal-author" style="text-align:center;">by ${novel.author} • ${langLabel(novel.lang)} • ${genreLabel(novel.genre)}</p>
+                <p class="modal-desc">${novel.desc}</p>
+                ${priceBoxHtml}
+                <div style="display:flex; gap:10px; flex-wrap:wrap; justify-content:center;">
+                    <button class="modal-btn" onclick="openReader(${novel.id})">${novel.type === "free" ? "Start Reading" : "Unlock & Read"}</button>
+                    <button class="modal-btn" style="background:#444;" onclick="downloadNovel(${novel.id})">⬇ Download</button>
+                </div>
+            `;
+            document.getElementById("novelModal").classList.add("show");
+        }
+
+        // ---- Reader: shows chapters (added via CMS) inside the app ----
+        function openReader(id) {
+            const novel = novels.find(n => n.id === id);
+            if (!novel) return;
+            const novelChapters = (chapters[novel.id] || []).slice().sort((a, b) => (a.num || 0) - (b.num || 0));
+
+            let bodyHtml;
+            if (novelChapters.length === 0) {
+                bodyHtml = `
+                    <p style="color:#666; text-align:center; margin:30px 0;">
+                        Is novel ke chapters abhi tak upload nahi huey.<br>
+                        Admin panel (/admin/) se chapters add karein.
+                    </p>`;
+            } else {
+                bodyHtml = novelChapters.map(ch => `
+                    <div style="margin-bottom:28px;">
+                        <h3 style="margin-bottom:8px;">Chapter ${ch.num}${ch.title ? ": " + ch.title : ""}</h3>
+                        <p style="white-space:pre-wrap; line-height:1.7;">${(ch.content || "").replace(/</g, "&lt;")}</p>
+                    </div>
+                `).join("");
+            }
+
+            document.getElementById("readerModalContent").innerHTML = `
+                <span class="modal-close" onclick="closeModal('readerModal')">&times;</span>
+                <h2>${novel.title}</h2>
+                <p class="modal-author">by ${novel.author}</p>
+                <hr style="margin:16px 0;">
+                ${bodyHtml}
+            `;
+            closeModal("novelModal");
+            document.getElementById("readerModal").classList.add("show");
+        }
+
+        // ---- Download: saves novel (info + any chapters) as a text file ----
+        function downloadNovel(id) {
+            const novel = novels.find(n => n.id === id);
+            if (!novel) return;
+            const novelChapters = (chapters[novel.id] || []).slice().sort((a, b) => (a.num || 0) - (b.num || 0));
+
+            let text = `${novel.title}\nby ${novel.author}\n\n${novel.desc}\n\n`;
+            if (novelChapters.length === 0) {
+                text += "(Is novel ke chapters abhi upload nahi huey.)\n";
+            } else {
+                novelChapters.forEach(ch => {
+                    text += `\n\nChapter ${ch.num}${ch.title ? ": " + ch.title : ""}\n\n${ch.content || ""}\n`;
+                });
+            }
+
+            const blob = new Blob([text], { type: "text/plain;charset=utf-8" });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement("a");
+            a.href = url;
+            a.download = novel.title.replace(/[^a-zA-Z0-9\u0600-\u06FF ]/g, "").trim() + ".txt";
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).classList.remove("show");
+        }
+
+        window.addEventListener("click", function (e) {
+            document.querySelectorAll(".modal").forEach(modal => {
+                if (e.target === modal) modal.classList.remove("show");
+            });
+        });
+
+        /* =========================================================
+           PART 3: ADMIN LOGIN, DASHBOARD, ADD/EDIT/DELETE NOVEL,
+           ADD CHAPTER, MANAGE-NOVELS TABLE, localStorage PERSISTENCE
+           ========================================================= */
+
+        // ---- Netlify Identity handles authentication now (no password in code) ----
+        // Enable "Identity" in your Netlify dashboard, set registration to
+        // "Invite only", then invite yourself — you'll set your own password
+        // by email, and it's never stored in this file.
+
+        if (window.netlifyIdentity) {
+            netlifyIdentity.on("init", user => {
+                if (user) {
+                    // Already logged in on this browser
+                    openAdminDashboard();
+                }
+            });
+            netlifyIdentity.on("login", user => {
+                netlifyIdentity.close();
+                openAdminDashboard();
+            });
+            netlifyIdentity.on("logout", () => {
+                document.getElementById("adminDashboard").classList.remove("show");
+                document.body.style.overflow = "";
+            });
+        }
+
+        // ---- chapters store: { novelId: [ {num, title, content}, ... ] } ----
+        let chapters = {};
+
+        let nextNovelId = Math.max(...novels.map(n => n.id)) + 1;
+        let selectedAddType = "free";
+        let selectedAddCover = "cover1";
+        let selectedEditType = "free";
+        let deleteTargetId = null;
+
+        // ---- Persistence ----
+        function saveData() {
+            try {
+                localStorage.setItem("jw_novels", JSON.stringify(novels));
+                localStorage.setItem("jw_chapters", JSON.stringify(chapters));
+            } catch (e) {
+                console.warn("Could not save to localStorage:", e);
+            }
+        }
+
+        function loadData() {
+            try {
+                const savedNovels = localStorage.getItem("jw_novels");
+                const savedChapters = localStorage.getItem("jw_chapters");
+                if (savedNovels) {
+                    novels = JSON.parse(savedNovels);
+                    nextNovelId = novels.length ? Math.max(...novels.map(n => n.id)) + 1 : 1;
+                }
+                if (savedChapters) {
+                    chapters = JSON.parse(savedChapters);
+                }
+            } catch (e) {
+                console.warn("Could not load from localStorage:", e);
+            }
+        }
+
+        // ---- Toast ----
+        function showToast(message, type = "success") {
+            const toast = document.getElementById("toast");
+            const icon = document.getElementById("toastIcon");
+            document.getElementById("toastMessage").textContent = message;
+            toast.classList.remove("success", "error");
+            toast.classList.add(type);
+            icon.className = type === "success" ? "fas fa-check-circle" : "fas fa-times-circle";
+            toast.classList.add("show");
+            setTimeout(() => toast.classList.remove("show"), 3000);
+        }
+
+        // ---- Admin login: ab yahan se seedha Decap CMS panel khulta hai ----
+        function openAdminLogin() {
+            window.location.href = "/admin/";
+        }
+
+        // ---- Secret admin access (hidden from normal visitors) ----
+        // Method 1: click the heart icon in the header 5 times within 3 seconds
+        let secretClickCount = 0;
+        let secretClickTimer = null;
+        function handleSecretLogoClick() {
+            secretClickCount++;
+            clearTimeout(secretClickTimer);
+            secretClickTimer = setTimeout(() => { secretClickCount = 0; }, 3000);
+            if (secretClickCount >= 5) {
+                secretClickCount = 0;
+                openAdminLogin();
+            }
+        }
+
+        // Method 2: visit the site with #admin-access at the end of the URL
+        function checkSecretHashAccess() {
+            if (window.location.hash === "#admin-access") {
+                openAdminLogin();
+            }
+        }
+        window.addEventListener("hashchange", checkSecretHashAccess);
+
+        document.getElementById("adminLoginForm").addEventListener("submit", function () {
+            // Not used anymore — Netlify Identity handles login now.
+            return false;
+        });
+
+        function openAdminDashboard() {
+            document.getElementById("adminDashboard").classList.add("show");
+            document.body.style.overflow = "hidden";
+            refreshDashboard();
+        }
+
+        function adminLogout() {
+            if (window.netlifyIdentity) {
+                netlifyIdentity.logout();
+            }
+            document.getElementById("adminDashboard").classList.remove("show");
+            document.body.style.overflow = "";
+            switchAdminPanelById("overviewPanel");
+        }
+
+        // ---- Sidebar panel switching ----
+        function switchAdminPanel(panelId, el) {
+            document.querySelectorAll(".sidebar-item").forEach(i => i.classList.remove("active"));
+            document.querySelectorAll(".admin-panel").forEach(p => p.classList.remove("active"));
+            el.classList.add("active");
+            document.getElementById(panelId).classList.add("active");
+            if (panelId === "manageNovelsPanel") renderManageNovelsTable();
+            if (panelId === "addChapterPanel") populateChapterNovelSelect();
+        }
+
+        function switchAdminPanelById(panelId) {
+            const item = document.querySelector(`.sidebar-item[data-panel="${panelId}"]`);
+            if (item) switchAdminPanel(panelId, item);
+        }
+
+        // ---- Dashboard overview stats ----
+        function refreshDashboard() {
+            document.getElementById("dashTotalNovels").textContent = novels.length;
+            document.getElementById("dashFreeNovels").textContent = novels.filter(n => n.type === "free").length;
+            document.getElementById("dashPaidNovels").textContent = novels.filter(n => n.type === "paid").length;
+            const totalChapters = Object.values(chapters).reduce((sum, arr) => sum + arr.length, 0);
+            document.getElementById("dashTotalChapters").textContent = totalChapters;
+        }
+
+        // ---- Add New Novel: type toggle ----
+        function selectNovelType(type) {
+            selectedAddType = type;
+            document.getElementById("typeFreeBtn").classList.toggle("selected", type === "free");
+            document.getElementById("typePaidBtn").classList.toggle("selected", type === "paid");
+            document.getElementById("novelPriceGroup").style.display = type === "paid" ? "block" : "none";
+        }
+
+        function selectCoverColor(el) {
+            document.querySelectorAll("#coverColorPicker .cover-swatch").forEach(s => s.classList.remove("selected"));
+            el.classList.add("selected");
+            selectedAddCover = el.dataset.cover;
+        }
+
+        const coverIcons = {
+            cover1: "📘", cover2: "📕", cover3: "📗", cover4: "📙", cover5: "📓"
+        };
+
+        // ---- Add New Novel: submit ----
+        document.getElementById("addNovelForm").addEventListener("submit", function () {
+            const title = document.getElementById("novelTitle").value.trim();
+            const author = document.getElementById("novelAuthor").value.trim();
+            const lang = document.getElementById("novelLanguage").value;
+            const genre = document.getElementById("novelCategory").value;
+            const desc = document.getElementById("novelDescription").value.trim();
+            const priceInput = document.getElementById("novelPrice").value.trim();
+            const errorBox = document.getElementById("addNovelError");
+
+            if (!title || !author || !desc || (selectedAddType === "paid" && !priceInput)) {
+                errorBox.textContent = "Please fill in all required fields.";
+                errorBox.classList.add("show");
+                return;
+            }
+
+            const newNovel = {
+                id: nextNovelId++,
+                title,
+                author,
+                lang,
+                genre,
+                type: selectedAddType,
+                price: selectedAddType === "free" ? "FREE" : `Rs ${priceInput}`,
+                desc,
+                icon: coverIcons[selectedAddCover] || "📚",
+                cover: selectedAddCover
+            };
+
+            novels.push(newNovel);
+            chapters[newNovel.id] = [];
+            saveData();
+
+            errorBox.classList.remove("show");
+            this.reset();
+            selectNovelType("free");
+            document.querySelectorAll("#coverColorPicker .cover-swatch").forEach((s, i) => s.classList.toggle("selected", i === 0));
+            selectedAddCover = "cover1";
+
+            renderNovelGrids();
+            refreshDashboard();
+            showToast(`"${newNovel.title}" novel add ho gayi!`, "success");
+        });
+
+        // ---- Manage Novels: render table ----
+        function renderManageNovelsTable(filterQuery = "") {
+            const tbody = document.getElementById("manageNovelsTableBody");
+            const query = filterQuery.trim().toLowerCase();
+            const list = novels.filter(n =>
+                !query || n.title.toLowerCase().includes(query) || n.author.toLowerCase().includes(query)
+            );
+
+            if (!list.length) {
+                tbody.innerHTML = `<tr><td colspan="7" style="text-align:center; color:#999; padding:30px;">Koi novel nahi mili.</td></tr>`;
+                return;
+            }
+
+            tbody.innerHTML = list.map(n => `
+                <tr>
+                    <td class="table-novel-title">${n.icon} ${n.title}</td>
+                    <td>${n.author}</td>
+                    <td>${langLabel(n.lang)}</td>
+                    <td>${genreLabel(n.genre)}</td>
+                    <td>${n.type === "free" ? '<span class="badge badge-free">Free</span>' : '<span class="badge badge-paid">Premium</span>'}</td>
+                    <td>${(chapters[n.id] || []).length}</td>
+                    <td>
+                        <div class="table-actions">
+                            <button class="btn-icon-sm btn-edit-sm" onclick="openEditNovel(${n.id})" title="Edit"><i class="fas fa-pen"></i></button>
+                            <button class="btn-icon-sm btn-chapters-sm" onclick="goToChaptersFor(${n.id})" title="Chapters"><i class="fas fa-file-alt"></i></button>
+                            <button class="btn-icon-sm btn-delete-sm" onclick="askDeleteNovel(${n.id})" title="Delete"><i class="fas fa-trash"></i></button>
+                        </div>
+                    </td>
+                </tr>
+            `).join("");
+        }
+
+        document.getElementById("manageNovelsSearch").addEventListener("input", function (e) {
+            renderManageNovelsTable(e.target.value);
+        });
+
+        function goToChaptersFor(novelId) {
+            switchAdminPanelById("addChapterPanel");
+            document.getElementById("chapterNovelSelect").value = novelId;
+            renderExistingChapters(novelId);
+        }
+
+        // ---- Edit Novel ----
+        function openEditNovel(id) {
+            const novel = novels.find(n => n.id === id);
+            if (!novel) return;
+
+            document.getElementById("editNovelId").value = novel.id;
+            document.getElementById("editNovelTitle").value = novel.title;
+            document.getElementById("editNovelAuthor").value = novel.author;
+            document.getElementById("editNovelLanguage").value = novel.lang;
+            document.getElementById("editNovelCategory").value = novel.genre;
+            document.getElementById("editNovelDescription").value = novel.desc;
+            document.getElementById("editNovelError").classList.remove("show");
+
+            selectEditNovelType(novel.type);
+            if (novel.type === "paid") {
+                const priceNum = novel.price.replace(/[^\d]/g, "");
+                document.getElementById("editNovelPrice").value = priceNum;
+            } else {
+                document.getElementById("editNovelPrice").value = "";
+            }
+
+            document.getElementById("editNovelModal").classList.add("show");
+        }
+
+        function selectEditNovelType(type) {
+            selectedEditType = type;
+            document.getElementById("editTypeFreeBtn").classList.toggle("selected", type === "free");
+            document.getElementById("editTypePaidBtn").classList.toggle("selected", type === "paid");
+            document.getElementById("editNovelPriceGroup").style.display = type === "paid" ? "block" : "none";
+        }
+
+        document.getElementById("editNovelForm").addEventListener("submit", function () {
+            const id = parseInt(document.getElementById("editNovelId").value, 10);
+            const novel = novels.find(n => n.id === id);
+            if (!novel) return;
+
+            const title = document.getElementById("editNovelTitle").value.trim();
+            const author = document.getElementById("editNovelAuthor").value.trim();
+            const desc = document.getElementById("editNovelDescription").value.trim();
+            const priceInput = document.getElementById("editNovelPrice").value.trim();
+            const errorBox = document.getElementById("editNovelError");
+
+            if (!title || !author || !desc || (selectedEditType === "paid" && !priceInput)) {
+                errorBox.textContent = "Please fill in all required fields.";
+                errorBox.classList.add("show");
+                return;
+            }
+
+            novel.title = title;
+            novel.author = author;
+            novel.lang = document.getElementById("editNovelLanguage").value;
+            novel.genre = document.getElementById("editNovelCategory").value;
+            novel.desc = desc;
+            novel.type = selectedEditType;
+            novel.price = selectedEditType === "free" ? "FREE" : `Rs ${priceInput}`;
+
+            saveData();
+            errorBox.classList.remove("show");
+            closeModal("editNovelModal");
+            renderNovelGrids();
+            renderManageNovelsTable(document.getElementById("manageNovelsSearch").value);
+            refreshDashboard();
+            showToast(`"${novel.title}" update ho gayi!`, "success");
+        });
+
+        // ---- Delete Novel ----
+        function askDeleteNovel(id) {
+            const novel = novels.find(n => n.id === id);
+            if (!novel) return;
+            deleteTargetId = id;
+            document.getElementById("deleteConfirmText").textContent =
+                `Kya aap "${novel.title}" ko delete karna chahte hain? Ye action wapas nahi ho sakta.`;
+            document.getElementById("deleteConfirmModal").classList.add("show");
+        }
+
+        document.getElementById("confirmDeleteBtn").addEventListener("click", function () {
+            if (deleteTargetId === null) return;
+            const novel = novels.find(n => n.id === deleteTargetId);
+            novels = novels.filter(n => n.id !== deleteTargetId);
+            delete chapters[deleteTargetId];
+            saveData();
+
+            closeModal("deleteConfirmModal");
+            renderNovelGrids();
+            renderManageNovelsTable(document.getElementById("manageNovelsSearch").value);
+            refreshDashboard();
+            populateChapterNovelSelect();
+            showToast(novel ? `"${novel.title}" delete ho gayi.` : "Novel delete ho gayi.", "error");
+            deleteTargetId = null;
+        });
+
+        // ---- Add Chapter ----
+        function populateChapterNovelSelect() {
+            const select = document.getElementById("chapterNovelSelect");
+            const currentValue = select.value;
+            select.innerHTML = '<option value="">-- Choose a novel --</option>' +
+                novels.map(n => `<option value="${n.id}">${n.icon} ${n.title}</option>`).join("");
+            if (currentValue) select.value = currentValue;
+        }
+
+        document.getElementById("chapterNovelSelect").addEventListener("change", function (e) {
+            renderExistingChapters(e.target.value ? parseInt(e.target.value, 10) : null);
+        });
+
+        function renderExistingChapters(novelId) {
+            const list = document.getElementById("existingChaptersList");
+            if (!novelId) {
+                list.innerHTML = "";
+                return;
+            }
+            const novelChapters = (chapters[novelId] || []).slice().sort((a, b) => a.num - b.num);
+            if (!novelChapters.length) {
+                list.innerHTML = '<p style="color:#999; font-size:13px; margin-top:15px;">Is novel mein abhi tak koi chapter add nahi hua.</p>';
+                return;
+            }
+            list.innerHTML = `<div class="admin-card-title" style="margin-top:25px;"><i class="fas fa-list"></i> Existing Chapters</div>` +
+                novelChapters.map(ch => `
+                    <div class="chapter-list-item">
+                        <div>
+                            <div class="chapter-list-item-title">${ch.title}</div>
+                            <div class="chapter-list-item-num">Chapter ${ch.num}</div>
+                        </div>
+                        <button class="btn-icon-sm btn-delete-sm" onclick="deleteChapter(${novelId}, ${ch.num})" title="Delete chapter"><i class="fas fa-trash"></i></button>
+                    </div>
+                `).join("");
+        }
+
+        function deleteChapter(novelId, num) {
+            if (!chapters[novelId]) return;
+            chapters[novelId] = chapters[novelId].filter(ch => ch.num !== num);
+            saveData();
+            renderExistingChapters(novelId);
+            refreshDashboard();
+            showToast("Chapter delete ho gaya.", "error");
+        }
+
+        document.getElementById("addChapterForm").addEventListener("submit", function () {
+            const novelId = document.getElementById("chapterNovelSelect").value;
+            const num = document.getElementById("chapterNumber").value.trim();
+            const title = document.getElementById("chapterTitle").value.trim();
+            const content = document.getElementById("chapterContent").value.trim();
+            const errorBox = document.getElementById("addChapterError");
+
+            if (!novelId || !num || !title || !content) {
+                errorBox.textContent = "Please select a novel and fill in all fields.";
+                errorBox.classList.add("show");
+                return;
+            }
+
+            const id = parseInt(novelId, 10);
+            if (!chapters[id]) chapters[id] = [];
+
+            const numInt = parseInt(num, 10);
+            const existingIndex = chapters[id].findIndex(ch => ch.num === numInt);
+            if (existingIndex >= 0) {
+                chapters[id][existingIndex] = { num: numInt, title, content };
+            } else {
+                chapters[id].push({ num: numInt, title, content });
+            }
+
+            saveData();
+            errorBox.classList.remove("show");
+            this.reset();
+            document.getElementById("chapterNovelSelect").value = novelId;
+
+            renderExistingChapters(id);
+            refreshDashboard();
+            renderManageNovelsTable(document.getElementById("manageNovelsSearch").value);
+            showToast(`Chapter ${numInt} add ho gaya!`, "success");
+        });
+
+        // ---- Init: load saved data (if any) then render everything ----
+        loadNovelsFromCMS();
+        renderNovelGrids();
+        refreshDashboard();
+        populateChapterNovelSelect();
+        checkSecretHashAccess();
+        updateActiveReaders();
+    </script>
+</body>
+</html>
