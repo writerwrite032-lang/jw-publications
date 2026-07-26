@@ -1,0 +1,61 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
+
+collections:
+  - name: "novels"
+    label: "Novels"
+    files:
+      - name: "novels"
+        label: "All Novels"
+        file: "data/novels.json"
+        fields:
+          - label: "Novels"
+            name: "novels"
+            widget: "list"
+            label_singular: "Novel"
+            summary: "{{fields.title}} — {{fields.author}}"
+            fields:
+              - { label: "ID (unique number, don't repeat)", name: "id", widget: "number", value_type: "int" }
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Author Name", name: "author", widget: "string" }
+              - label: "Language"
+                name: "lang"
+                widget: "select"
+                options:
+                  - { label: "Urdu", value: "urdu" }
+                  - { label: "English", value: "english" }
+              - label: "Category"
+                name: "genre"
+                widget: "select"
+                options:
+                  - { label: "Romantic", value: "romantic" }
+                  - { label: "Thriller", value: "thriller" }
+                  - { label: "Drama", value: "drama" }
+              - label: "Novel Type"
+                name: "type"
+                widget: "select"
+                options:
+                  - { label: "Free", value: "free" }
+                  - { label: "Premium", value: "paid" }
+              - { label: "Price (e.g. Rs 199, or type FREE)", name: "price", widget: "string" }
+              - { label: "Description", name: "desc", widget: "text" }
+              - { label: "Cover Emoji", name: "icon", widget: "string", default: "📘", hint: "Ek emoji jaise 📘 🌙 🔍" }
+              - label: "Cover Color Theme"
+                name: "cover"
+                widget: "select"
+                options: ["cover1", "cover2", "cover3", "cover4", "cover5"]
+                default: "cover1"
+              - label: "Chapters"
+                name: "chapters"
+                widget: "list"
+                required: false
+                label_singular: "Chapter"
+                summary: "Ch {{fields.num}} — {{fields.title}}"
+                fields:
+                  - { label: "Chapter Number", name: "num", widget: "number", value_type: "int" }
+                  - { label: "Chapter Title", name: "title", widget: "string" }
+                  - { label: "Chapter Content", name: "content", widget: "text" }
