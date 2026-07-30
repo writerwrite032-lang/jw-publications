@@ -161,6 +161,20 @@
       "icon": "🌊",
       "type": "free",
       "id": 12
+    },
+    {
+      "genre": "romantic",
+      "pdf_file": "/images/uploads/یار-دلبرم-راحیلہ-خان-مکمل.pdf",
+      "price": "Free",
+      "author": "Jaweria ",
+      "lang": "english",
+      "desc": "Romentic story arrange marriage based ",
+      "cover_image": "/images/uploads/53372.jpg",
+      "cover": "cover2",
+      "title": "The beast ",
+      "icon": "📘",
+      "type": "free",
+      "id": 1
     }
   ]
 }
