@@ -59,3 +59,15 @@ collections:
                   - { label: "Chapter Number", name: "num", widget: "number", value_type: "int" }
                   - { label: "Chapter Title", name: "title", widget: "string" }
                   - { label: "Chapter Content", name: "content", widget: "text" }
+              - label: "Cover Image"
+                name: "cover_image"
+                widget: "image"
+                required: false
+              - label: "Video File"
+                name: "video"
+                widget: "file"
+                required: false
+              - label: "PDF File"
+                name: "pdf_file"
+                widget: "file"
+                required: false
